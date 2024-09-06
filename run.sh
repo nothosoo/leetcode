@@ -1,26 +1,7 @@
 #!/bin/bash
 
-# Function to parse options and extract the file name
-function parse_options() {
-  local file_name=""
-  while getopts ":f:" opt; do
-    case "$opt" in
-      f) file_name="$OPTARG" ;;
-      \?) echo "Invalid option: -$OPTARG"
-         exit 1 ;;
-    esac
-  done
-  shift $((OPTIND - 1))
-
-  if [[ -z "$file_name" ]]; then
-    echo "Missing file name. Use -f option to specify the file."
-    exit 1
-  fi
-  return 0
-}
-
 # Get the file name from the user using options
-# $1 is file name
+# $1 is the file name
 file_name=$1
 
 # Determine the file extension
